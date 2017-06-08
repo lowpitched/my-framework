@@ -11,14 +11,15 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-
-    <context:component-scan base-package="com.mlh.test.**"/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.mlh.test,com.mlh.sincry"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".jsp" />
         <property name="order" value="1024"/>
     </bean>
+
 
     <!-- freemarker的配置 -->
     <bean id="freemarkerConfig"
@@ -32,11 +33,14 @@
                 <prop key="datetime_format">yyyy-MM-dd HH:mm:dd</prop><!-- 时间格式化 -->
                 <prop key="date_format">yyyy-MM-dd</prop>
                 <prop key="number_format">#.##</prop>
+                <!--重要  在这里加编码格式才有用-->
+                <prop key="defaultEncoding">UTF-8</prop>
             </props>
         </property>
     </bean>
 
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="contentType" value="text/html;charset=UTF-8"/>
         <property name="prefix" value=""/>
         <property name="suffix" value=".ftl"/>
         <property name="order" value="1"/>

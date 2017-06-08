@@ -19,7 +19,7 @@ public class TestFreemarkerController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("freemarkTest");
 		System.out.println(1);
-		mv.addObject("hello","hello freemarker");
+		mv.addObject("hello","hello 中国");
 		return mv;
 	}
 

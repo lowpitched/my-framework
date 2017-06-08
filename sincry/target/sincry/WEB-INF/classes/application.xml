@@ -11,7 +11,6 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-    <context:annotation-config/>
-
-    <import resource="spring-mybatis.xml"></import>
+    <import resource="classpath:spring-mybatis.xml"></import>
+    <import resource="classpath:spring-shiro.xml"></import>
 </beans>

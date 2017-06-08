@@ -9,5 +9,6 @@
 <a href="/helloWorld/login.do">springMvc测试</a>
 <a href="/testMyBatis/testMyBatis.do">myBatis测试</a>
 <a href="/testFreemarker/test.do">freemarker测试</a>
+<a href="/login/testLogin.do">登录测试</a>
 </body>
 </html>

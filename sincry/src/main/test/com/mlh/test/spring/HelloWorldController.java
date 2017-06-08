@@ -1,5 +1,6 @@
 package com.mlh.test.spring;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class HelloWorldController {
 
 	@RequestMapping("/hello.do")
 	@ResponseBody
+	@RequiresPermissions("hello")
 	public String hello(){
 		LOGGER.info("***************hello begin**************");
 		return helloWorld.say();
