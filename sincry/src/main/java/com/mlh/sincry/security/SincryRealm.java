@@ -38,7 +38,7 @@ public class SincryRealm extends AuthorizingRealm {
 		}else{
 
 		}
-		return authorizationInfo;
+		return null;
 	}
 
 	/**

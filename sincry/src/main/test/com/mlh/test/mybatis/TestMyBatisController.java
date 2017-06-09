@@ -27,10 +27,10 @@ public class TestMyBatisController {
 
 	@RequestMapping("/testMyBatis.do")
 	@ResponseBody
-	public String testMyBatis(HttpServletRequest request){
+	public List<Person> testMyBatis(HttpServletRequest request){
 		try {
 			List<Person> persons = personMapper.findAll();
-			return JSON.toJSONString(persons);
+			return persons;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
