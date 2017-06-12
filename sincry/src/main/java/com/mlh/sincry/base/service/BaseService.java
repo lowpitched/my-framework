@@ -43,4 +43,6 @@ public abstract class BaseService<T> implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		this.dao = getDao();
 	}
+
+
 }

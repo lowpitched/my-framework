@@ -9,7 +9,7 @@
         <commentGenerator>    
             <property name="suppressDate" value="true"/>    
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->    
-            <property name="suppressAllComments" value="true"/>    
+            <property name="suppressAllComments" value="false"/>    
         </commentGenerator>    
         <!--数据库链接URL，用户名、密码 -->    
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/sincry" userId="root" password="Justdoit3!">    
@@ -27,12 +27,12 @@
             <property name="enableSubPackages" value="true"/>    
         </sqlMapGenerator>    
         <!-- 生成DAO的包名和位置-->    
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.mlh.sincry.security.mapper" targetProject="src/main/java">    
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.mlh.sincry.security.dao" targetProject="src/main/java">    
             <property name="enableSubPackages" value="true"/>    
         </javaClientGenerator>    
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->    
         <!--<table tableName="person" domainObjectName="Person" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->  
-		<table tableName="u_permission" domainObjectName="Permission" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="u_role" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 		
     </context>    
 </generatorConfiguration>    

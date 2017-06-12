@@ -27,6 +27,6 @@
     </settings>
 
     <typeAliases>
-        <package name="com.mlh.test.mybatis" />
+        <package name="com.mlh.sincry" />
     </typeAliases>
 </configuration>

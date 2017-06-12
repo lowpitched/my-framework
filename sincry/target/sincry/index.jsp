@@ -5,12 +5,14 @@
     <script type="text/javascript" src="/resource/jquery/jquery-3.2.1.js"></script>
 </head>
 <body>
-<h2>Hello World!</h2>
+这里是主页
+<%--<h2>Hello World!</h2>
 <a href="/helloWorld/hello.do">spring测试</a>
 <a href="/helloWorld/login.do">springMvc测试</a>
 <a href="/testMyBatis/testMyBatis.do">myBatis测试</a>
 <a href="/testFreemarker/test.do">freemarker测试</a>
 <a href="/login/testLogin.do">登录测试</a>
+<a href="/login/logout.do">登出测试</a>
 <a href="/user/find.do?id=1">查询测试</a>
 <button id="btn">乱码测试</button>
 <script type="text/javascript">
@@ -25,6 +27,6 @@
             })
         });
     });
-</script>
+</script>--%>
 </body>
 </html>
