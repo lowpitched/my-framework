@@ -1,6 +1,9 @@
 package com.mlh.sincry.security;
 
+import com.mlh.sincry.base.Result;
 import com.mlh.sincry.security.pojo.User;
+import com.mlh.sincry.security.serivce.PermissionService;
+import com.mlh.sincry.security.serivce.RoleService;
 import com.mlh.sincry.security.serivce.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -14,6 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * 自定义REALM
  * Created by menglihao on 2017/6/8.
@@ -24,6 +29,12 @@ public class SincryRealm extends AuthorizingRealm {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private PermissionService permissionService;
+
+	@Autowired
+	private RoleService roleService;
 
 	@Override
 	public String getName() {
@@ -42,9 +53,12 @@ public class SincryRealm extends AuthorizingRealm {
 			authorizationInfo.addRole("admin");
 			authorizationInfo.addStringPermission("admin:manager");
 		}else{
-
+			List<String> roles = roleService.findRoleByUser(currUsername);
+			authorizationInfo.addRoles(roles);
+			List<String> permissions = permissionService.findPermissionsByUser(currUsername);
+			authorizationInfo.addStringPermissions(permissions);
 		}
-		return null;
+		return authorizationInfo;
 	}
 
 	/**
@@ -58,7 +72,7 @@ public class SincryRealm extends AuthorizingRealm {
 		String username = usernamePasswordToken.getUsername();
 		char[] pwd = usernamePasswordToken.getPassword();
 		if(null==pwd){
-			throw new RuntimeException("密码不能为空");
+			throw new AuthenticationException("密码不能为空");
 		}
 		String password = new String(pwd);
 		if(validUser(username,password)){
@@ -66,7 +80,7 @@ public class SincryRealm extends AuthorizingRealm {
 			setSession(username,password);
 			return authenticationInfo;
 		}else{
-			throw new RuntimeException("账号或密码错误");
+			throw new AuthenticationException("密码错误");
 		}
 	}
 
@@ -83,8 +97,11 @@ public class SincryRealm extends AuthorizingRealm {
 	private boolean validUser(String username, String password) {
 		password = encodePassword(password);
 		User user = userService.login(username, password);
-		System.out.println(user.getEmail());
-		return true;
+		if(null!=user){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	/**

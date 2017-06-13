@@ -1,5 +1,6 @@
 package com.mlh.sincry.security.serivce;
 
+import com.mlh.sincry.base.Result;
 import com.mlh.sincry.security.dao.UserMapper;
 import com.mlh.sincry.security.pojo.User;
 
@@ -18,4 +19,5 @@ public interface UserService {
 
 	User login(String username,String password);
 
+	Result checkUserName(String username);
 }

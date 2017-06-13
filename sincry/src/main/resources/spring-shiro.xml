@@ -27,10 +27,9 @@
         <property name="filterChainDefinitions">
             <value>
                 /login/login.do=anon
-                /login/testLogin.do=anon
-                /testFreemarker/test.do=authc,perms[admin:manage]
+                /login/checkUsername.do=anon
+                /resource/**=anon
                 /**=authc
-                /admin/listUser**=authc,perms[admin:manage]
             </value>
         </property>
     </bean>

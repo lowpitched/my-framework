@@ -1,6 +1,7 @@
 package com.mlh.sincry.security.dao;
 
 import com.mlh.sincry.security.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -54,5 +55,5 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
 
-    List<User> selectByQuery(User user);
+    User selectByQuery(@Param(value="username") String username, @Param(value="password") String passwrod);
 }

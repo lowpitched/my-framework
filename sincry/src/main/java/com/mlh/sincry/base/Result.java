@@ -7,11 +7,15 @@ import java.util.List;
  */
 public class Result<T> {
 
-	private int code;
+	public static final int SUCCESS_CODE = 0;
 
-	private String message;
+	public static final int UNKONWN_ERR_CODE= 100;
 
-	private boolean isSuccess;
+	private int code = SUCCESS_CODE;
+
+	private String message = "OK";
+
+	private boolean success = true;
 
 	private List<T> data;
 
@@ -32,11 +36,11 @@ public class Result<T> {
 	}
 
 	public boolean isSuccess() {
-		return isSuccess;
+		return success;
 	}
 
 	public void setSuccess(boolean success) {
-		isSuccess = success;
+		success = success;
 	}
 
 	public List<T> getData() {
@@ -45,5 +49,16 @@ public class Result<T> {
 
 	public void setData(List<T> data) {
 		this.data = data;
+	}
+
+	public void err(Integer code,String message){
+		this.success = false;
+		if(null!=code) {
+			this.code = code;
+		}else{
+			code = UNKONWN_ERR_CODE;
+		}
+		this.message = message;
+
 	}
 }
