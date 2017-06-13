@@ -10,6 +10,7 @@
 <div class="login-bg">
     <div class="login-title">welcome</div>
     <div class="login-form">
+
         <form class="form" action="/login/login.do" method="post">
             <div id="check-message" ></div>
             <input type="text" id="email" name="email" placeholder="Username">
@@ -49,6 +50,7 @@
             var username = $(this).val();
             if(null==username||'undefined'==username||''==username){
                 $("#check-message").text("").css("display","none");
+                $("#email").css("border","0px");
                 return;
             }
             $.ajax({
@@ -58,9 +60,11 @@
                 data:{email:username},
                 success:function(data){
                     if(!data["success"]){
+                        $("#email").css("border","1px solid red")
                         $("#check-message").text(data["message"]).css("display","block");
                     }else{
                         $("#check-message").text("").css("display","none");
+                        $("#email").css("border","0px");
                     }
                 },
                 error:function(data){
