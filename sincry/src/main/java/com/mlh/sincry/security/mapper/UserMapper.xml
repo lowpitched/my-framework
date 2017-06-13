@@ -147,11 +147,14 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="selectByQuery" resultMap="BaseResultMap">
+  <select id="selectByQuery" parameterType="com.mlh.sincry.security.pojo.User" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from
       u_user
+    where 1=1
+    and email=#{email,jdbcType=VARCHAR}
+    and pswd = #{pswd,jdbcType=VARCHAR}
   </select>
 
 </mapper>
